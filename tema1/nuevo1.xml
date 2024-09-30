@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <libros>
+    <libro1>
+      <titulo>Las aventuras de antonio</titulo>
+      <escritor> J.K:Rowlin</escritor>
+      <paginas> 230 </paginas>
+      <genero> Fantastico </genero>
+    </libro1>
+    <libro2> 
+      <titulo>Fran y sus amigos</titulo>
+      <escritor>Antonio Banderas</escritor>
+      <paginas> 360 </paginas>
+      <genero> Aventura </genero>
+    </libro2>
+
+  </libros>
