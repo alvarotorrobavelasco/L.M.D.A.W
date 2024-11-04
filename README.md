@@ -11,4 +11,4 @@ Ejercicio | Descripción
 [Ejercicio3](/tema1/ejercicio3.html)| ejercicio de "Usa el texto mostrado y dale el formato siguiendo las indicaciones: Crea una cabecera h1 para “Curriculum Vitae” Usa una cabecera h2 Cada apartado  Coloca una etiqueta tos"
 [Ejercicio4](/tema1/ejercicio4.html)| ejercicio "Crea una página html que muestre el siguiente aspecto"
 [Ejercicio5,6,7](/tema1/Ejercicio5,6,7.html)| ejercicio "Creamos una pagina html con distintos estilos"
-[Ejercicio8](/tema1/ejercicio8)| ejercicio "Creamos una pagina web con enlaces a otras paginas"
+[Ejercicio8](/tema1/ejercicio 8)| ejercicio "Creamos una pagina web con enlaces a otras paginas"
