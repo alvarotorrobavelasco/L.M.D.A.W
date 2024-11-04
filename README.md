@@ -1,5 +1,8 @@
 # LLMM
 Lenguajes de marcas de DAW
+#Practicas
+Ejercicio | Descripción
+----------|------------
 [Pagina HTML](/tema1/pagina.html)| página web sencilla con un encabezado h1 y un pequeño parrafo de textode mi elección
 [Documento XML](/tema1/biblioteca.xml)| un documento xml que contiene informacion de un par de libros de una biblioteca
 [HTML con SVG](/tema1/Circulo.html)| un documento html en el cual utilizando SVG creamos un circulo
