@@ -15,7 +15,7 @@ Ejercicio | Descripción
 [Ejercicio4](/tema1/ejercicio4.html)| ejercicio "Crea una página html que muestre el siguiente aspecto"
 [Ejercicio5,6,7](/tema1/Ejercicio5,6,7.html)| ejercicio "Creamos una pagina html con distintos estilos"
 [Ejercicio8](/tema1/ejercicio8)| ejercicio "Creamos una pagina web con enlaces a otras paginas"
-[Ejercicio10 y 11](/tema1/ejercicio10y11)| ejercicio "Creamos una pagina web con listas ordenadas y desordenadas"
-[Ejercicio12](/tema1/ejercicio12)| ejercicio 12
-[Ejercicio13](/tema1/ejercicio13)| ejercicio 13
-[Ejercicio14](/tema1/ejercicio14)| ejercicio 14
+[Ejercicio10 y 11](/tema1/ejercicio10y11.html)| ejercicio "Creamos una pagina web con listas ordenadas y desordenadas"
+[Ejercicio12](/tema1/ejercicio12.html)| ejercicio 12
+[Ejercicio13](/tema1/ejercicio13.html)| ejercicio 13
+[Ejercicio14](/tema1/ejercicio14.html)| ejercicio 14
