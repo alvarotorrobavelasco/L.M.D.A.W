@@ -19,3 +19,6 @@ Ejercicio | Descripción
 [Ejercicio12](/tema1/ejercicio12.html)| ejercicio 12
 [Ejercicio13](/tema1/ejercicio13.html)| ejercicio 13
 [Ejercicio14](/tema1/ejercicio14.html)| ejercicio 14
+[Ejercicio14](/tema1/ej15.html)| ejercicio 15
+[Ejercicio14](/tema1/ej16.html)| ejercicio 16
+[Ejercicio14](/tema1/ej17.html)| ejercicio 17
