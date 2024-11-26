@@ -21,4 +21,4 @@ Ejercicio | Descripción
 [Ejercicio14](/tema1/ejercicio14.html)| ejercicio 14
 [Ejercicio15](/tema1/ej15.html)| ejercicio 15
 [Ejercicio16](/tema1/ej16.html)| ejercicio 16
-[Ejercicio17](/tema1/ej17.html)| ejercicio 17
+[Ejercicio17](/tema1/ej17)| ejercicio 17
