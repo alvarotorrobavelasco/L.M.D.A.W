@@ -22,6 +22,18 @@ Ejercicio | Descripción
 [Ejercicio15](/tema1/ej15.html)| ejercicio 15
 [Ejercicio16](/tema1/ej16.html)| ejercicio 16
 [Ejercicio17](/tema1/ej17)| ejercicio 17
+[Ejercicio18](/tema1/ejercicio18)| ejercicio 18
+[Ejercicio19](/tema1/ejercicio19)| ejercicio 19
+[Ejercicio20](/tema1/ejercicio20)| ejercicio 20
+[Ejercicio21](/tema1/ejercicio21)| ejercicio 21
+[Ejercicio22](/tema1/ejercicio22)| ejercicio 22
+[Ejercicio23](/tema1/ejercicio23)| ejercicio 23
+[Ejercicio24](/tema1/ejercicio24)| ejercicio 24
+[Ejercicio25](/tema1/ejercicio25)| ejercicio 25
+[Ejercicio26](/tema1/ejercicio26)| ejercicio 26
+[Ejercicio27](/tema1/ejercicio27)| ejercicio 27
+[Ejercicio28](/tema1/ejercicio28)| ejercicio 28
+[Ejercicio29](/tema1/ejercicio29)| ejercicio 29
 ## Proyecto 1er Trimestre
 Ejercicio | Descripción
 ----------|------------
