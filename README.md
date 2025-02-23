@@ -41,8 +41,8 @@ Ejercicio | Descripción
 ## Proyecto 2º Trimestre
 Ejercicio | Descripción
 ----------|------------
-[Web4U](https://alvarotorrobavelasco.github.io/SemanaSantaHuelva/index.html)| PaginaWeb subida
-[Web4U]()| PaginaWeb subida
+[Semana Santa](https://alvarotorrobavelasco.github.io/SemanaSantaHuelva/index.html)| PaginaWeb subida
+[Repositorio](https://github.com/alvarotorrobavelasco/SemanaSantaHuelva)| Enlace al respositorio de la pagina
 
 
 
