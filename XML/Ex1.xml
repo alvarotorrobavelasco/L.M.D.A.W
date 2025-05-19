@@ -1,0 +1,17 @@
+<test_element>This is our first element!</test_element>
+<book>
+    <chapters>
+        <!-- contenido de capítulos aquí -->
+    </chapters>
+    <author>
+        <name>
+            <!-- nombre del autor aquí -->
+        </name>
+        <address>
+            <!-- dirección aquí -->
+        </address>
+    </author>
+</book>
+<entry no="24" date="27.10.2004"></entry>
+<!-- Forma Corta -->
+<entry no="24" date="27.10.2004"/>

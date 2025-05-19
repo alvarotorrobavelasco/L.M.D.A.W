@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<letter>
+    <header>
+        <sender>
+            <name>Antonio García Martínez</name>
+            <address>
+                <street>Calle Mayor 123</street>
+                <city>Madrid</city>
+                <state>Madrid</state>
+                <zip>28001</zip>
+            </address>
+            <email>antonio.garcia@email.es</email>
+            <phone>91-555-0123</phone>
+        </sender>
+        <receiver>
+            <name>María López Sánchez</name>
+            <address>
+                <street>Avenida de la Constitución 456</street>
+                <city>Barcelona</city>
+                <state>Barcelona</state>
+                <zip>08001</zip>
+            </address>
+        </receiver>
+        <date>20-01-2024</date>
+    </header>
+    
+    <content>
+        <greeting>Estimada Sra. López,</greeting>
+        <body>
+            <paragraph>Espero que esta carta le encuentre bien. Me dirijo a usted para tratar sobre nuestra próxima colaboración en el proyecto.</paragraph>
+            <paragraph>Me gustaría programar una reunión la próxima semana para revisar los detalles y el cronograma del proyecto.</paragraph>
+            <paragraph>Por favor, hágame saber qué horario le vendría mejor.</paragraph>
+        </body>
+        <closing>Atentamente,</closing>
+    </content>
+    
+    <signature>
+        <name>Antonio García Martínez</name>
+        <title>Director de Proyectos</title>
+        <company>Soluciones Tecnológicas S.L.</company>
+    </signature>
+</letter>

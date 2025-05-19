@@ -1,0 +1,13 @@
+<!-- Esto es un comentario --><!-- INCORRECTO -->
+<!--........................................................................-->
+<elemento color="rojo" color="azul">
+<!-- CORRECTO -->
+<elemento color="rojo">
+<!--........................................................................-->
+<!-- CORRECTO -->
+<elemento>contenido</elemento>
+
+<!-- INCORRECTO -->
+<elemento>contenido</Elemento>
+<elemento>contenido</otroElemento>
+<!--........................................................................-->

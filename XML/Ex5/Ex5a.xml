@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDList>
+    <CD>
+        <name>Back in Black</name>
+        <artist>AC/DC</artist>
+        <year>1980</year>
+        <category>Hard Rock</category>
+        <tracks>
+            <track>
+                <number>1</number>
+                <title>Hells Bells</title>
+                <duration>5:10</duration>
+            </track>
+            <track>
+                <number>2</number>
+                <title>Back in Black</title>
+                <duration>4:15</duration>
+            </track>
+            <track>
+                <number>3</number>
+                <title>You Shook Me All Night Long</title>
+                <duration>3:30</duration>
+            </track>
+        </tracks>
+    </CD>
+</CDList>
