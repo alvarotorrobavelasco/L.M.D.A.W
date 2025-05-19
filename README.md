@@ -64,6 +64,17 @@ Ejercicio | Descripción
 [Ejercicio2](/XML.DOM/Ex2)| ejercicio 2
 [Ejercicio3](/XML.DOM/Ex3)| ejercicio 3
 
+AJAX
+
+Ejercicio | Descripción
+----------|------------
+[Ejercicio1](/AJAX/Ex1)| ejercicio 1
+[Ejercicio2](/AJAX/Ex2)| ejercicio 2
+[Ejercicio3](/AJAX/Ex3)| ejercicio 3
+[Ejercicio4](/AJAX/Ex4)| ejercicio 4
+[Ejercicio5](/AJAX/Ex5)| ejercicio 5
+
+
 
 
 
