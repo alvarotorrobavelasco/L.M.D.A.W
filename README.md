@@ -46,7 +46,7 @@ Ejercicio | Descripción
 
 #3 Trimestre
 Ejercicio | Descripción
-[Ejercicio1](/XML/Ex1)| ejercicio 1
-
+----------|------------
+[Ejercicio1](/XML/Ex1.xml)| ejercicio 1
 
 
