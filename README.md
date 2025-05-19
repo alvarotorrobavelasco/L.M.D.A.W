@@ -44,5 +44,9 @@ Ejercicio | Descripción
 [Semana Santa](https://alvarotorrobavelasco.github.io/SemanaSantaHuelva/index.html)| PaginaWeb subida
 [Repositorio](https://github.com/alvarotorrobavelasco/SemanaSantaHuelva)| Enlace al respositorio de la pagina
 
+#3 Trimestre
+Ejercicio | Descripción
+[Ejercicio1](/XML/Ex1)| ejercicio 1
+
 
 
