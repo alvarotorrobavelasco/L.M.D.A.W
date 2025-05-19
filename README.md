@@ -45,6 +45,9 @@ Ejercicio | Descripción
 [Repositorio](https://github.com/alvarotorrobavelasco/SemanaSantaHuelva)| Enlace al respositorio de la pagina
 
 #3 Trimestre
+
+XML
+
 Ejercicio | Descripción
 ----------|------------
 [Ejercicio1](/XML/Ex1.xml)| ejercicio 1
@@ -53,6 +56,15 @@ Ejercicio | Descripción
 [Ejercicio4](/XML/ex4.xml)| ejercicio 4
 [Ejercicio5](/XML/Ex5)| ejercicio 5
 
+XML.DOM
+
+Ejercicio | Descripción
+----------|------------
+[Ejercicio1](/XML/Ex1.xml)| ejercicio 1
+[Ejercicio2](/XML/Ex2.xml)| ejercicio 2
+[Ejercicio3](/XML/ex3-err.xml)| ejercicio 3
+[Ejercicio4](/XML/ex4.xml)| ejercicio 4
+[Ejercicio5](/XML/Ex5)| ejercicio 5
 
 
 
