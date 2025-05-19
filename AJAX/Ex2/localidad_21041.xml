@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <prediccion>
+        <dia>
+            <temperatura>
+                <maxima>24</maxima>
+                <minima>14</minima>
+            </temperatura>
+            <estado_cielo periodo="00-06">Despejado</estado_cielo>
+            <estado_cielo periodo="06-12">Poco nuboso</estado_cielo>
+            <estado_cielo periodo="12-18">Nuboso</estado_cielo>
+            <estado_cielo periodo="18-24">Parcialmente nuboso</estado_cielo>
+            <viento periodo="00-06">
+                <direccion>SO</direccion>
+                <velocidad>15</velocidad>
+            </viento>
+            <viento periodo="06-12">
+                <direccion>O</direccion>
+                <velocidad>20</velocidad>
+            </viento>
+            <viento periodo="12-18">
+                <direccion>NO</direccion>
+                <velocidad>25</velocidad>
+            </viento>
+            <viento periodo="18-24">
+                <direccion>N</direccion>
+                <velocidad>18</velocidad>
+            </viento>
+            <humedad_relativa periodo="00-06">90</humedad_relativa>
+            <humedad_relativa periodo="06-12">80</humedad_relativa>
+            <humedad_relativa periodo="12-18">70</humedad_relativa>
+            <humedad_relativa periodo="18-24">85</humedad_relativa>
+        </dia>
+    </prediccion>
+</root>

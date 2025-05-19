@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NASA APOD API</title>
+    <meta charset="UTF-8">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .info-section {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .explanation {
+            line-height: 1.6;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>NASA - Foto Astronómica del Día</h2>
+
+        <div class="info-section">
+            <h3>Fecha:</h3>
+            <p id="fecha"></p>
+        </div>
+
+        <div class="info-section">
+            <h3>Explicación:</h3>
+            <p id="explicacion" class="explanation"></p>
+        </div>
+
+        <div class="info-section">
+            <h3>URL de la imagen:</h3>
+            <p id="urlImagen"></p>
+        </div>
+
+        <div class="info-section">
+            <h3>Imagen:</h3>
+            <img id="imagenNASA" src="" alt="Imagen astronómica del día">
+        </div>
+    </div>
+
+    <script>
+        // Función auxiliar para manejar peticiones AJAX
+        function myAjaxRequest(url, callback) {
+            var ajax = new XMLHttpRequest();
+            ajax.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200)
+                    callback(this);
+            }
+            ajax.onerror = function() {
+                console.log("Error en la petición AJAX a: " + url);
+                mostrarError("Error de conexión con la API");
+            }
+            ajax.open("GET", url, true);
+            ajax.send();
+        }
+
+        function mostrarError(mensaje) {
+            document.getElementById("fecha").textContent = mensaje;
+            document.getElementById("explicacion").textContent = mensaje;
+            document.getElementById("urlImagen").textContent = mensaje;
+            document.getElementById("imagenNASA").src = "";
+        }
+
+        // Función callback para procesar los datos de la NASA
+        function procesarDatosNASA(ajax) {
+            try {
+                const nasaData = JSON.parse(ajax.responseText);
+                
+                // Mostrar fecha
+                document.getElementById("fecha").textContent = nasaData.date;
+                
+                // Mostrar explicación
+                document.getElementById("explicacion").textContent = nasaData.explanation;
+                
+                // Mostrar URL
+                document.getElementById("urlImagen").textContent = nasaData.url;
+                
+                // Mostrar imagen
+                document.getElementById("imagenNASA").src = nasaData.url;
+                
+            } catch (error) {
+                console.error("Error al procesar los datos:", error);
+                mostrarError("Error al procesar los datos de la NASA");
+            }
+        }
+
+        // Realizar la petición usando la función auxiliar
+        const apiUrl = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2020-05-01";
+        myAjaxRequest(apiUrl, procesarDatosNASA);
+    </script>
+</body>
+</html>

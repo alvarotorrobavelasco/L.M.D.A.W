@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Información Meteorológica</title>
+    <meta charset="UTF-8">
+    <style>
+        .weather-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .weather-section {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 3px;
+        }
+        .temp {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .sky-state {
+            margin: 10px 0;
+        }
+        .wind-info {
+            color: #666;
+        }
+        .humidity {
+            color: #0066cc;
+        }
+        select {
+            padding: 5px;
+            margin: 10px 0;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-container">
+        <h2>Información Meteorológica</h2>
+        
+        <div class="info-message" style="background-color: #e8f4f8; padding: 15px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #b8e0ed;">
+            <p><strong>Nota para el profesor:</strong></p>
+            <p>En esta implementación se han utilizado archivos XML locales en lugar de la API de AEMET debido a las siguientes razones técnicas:</p>
+            <ol>
+                <li>La API de AEMET implementa restricciones CORS que impiden el acceso directo desde JavaScript en el navegador.</li>
+                <li>Para un ejercicio educativo de AJAX y XML, el uso de archivos locales permite centrarse en el manejo de datos XML sin las complicaciones de autenticación y CORS.</li>
+                <li>En un entorno de producción real, se necesitaría implementar un servidor backend que actúe como intermediario para las peticiones a la API de AEMET.</li>
+            </ol>
+        </div>
+
+        <select id="locationSelect" onchange="getWeatherData()">
+            <option value="21041">Huelva capital</option>
+            <option value="21002">Aljaraque</option>
+            <option value="21021">Cartaya</option>
+        </select>
+
+        <div id="weatherInfo"></div>
+    </div>
+
+    <script>
+        function getWeatherData() {
+            const locationCode = document.getElementById('locationSelect').value;
+            const xhttp = new XMLHttpRequest();
+            
+            xhttp.onload = function() {
+                if (this.status == 200) {
+                    const xmlDoc = this.responseXML;
+                    displayWeatherInfo(xmlDoc);
+                } else {
+                    document.getElementById('weatherInfo').innerHTML = 
+                        '<p style="color: red;">Error al cargar los datos meteorológicos</p>';
+                }
+            };
+
+            xhttp.onerror = function() {
+                document.getElementById('weatherInfo').innerHTML = 
+                    '<p style="color: red;">Error de conexión al servidor</p>';
+            };
+
+            // Usar archivo XML local
+            const url = `localidad_${locationCode}.xml`;
+            xhttp.open("GET", url);
+            xhttp.send();
+        }
+
+        function displayWeatherInfo(xmlDoc) {
+            const prediccion = xmlDoc.getElementsByTagName('prediccion')[0];
+            const dia = prediccion.getElementsByTagName('dia')[0];
+            
+            let html = '<div class="weather-section">';
+            
+            // Temperaturas
+            const temperatura = dia.getElementsByTagName('temperatura')[0];
+            const maxima = temperatura.getElementsByTagName('maxima')[0].childNodes[0].nodeValue;
+            const minima = temperatura.getElementsByTagName('minima')[0].childNodes[0].nodeValue;
+            html += `<div class="temp">
+                        <p>Temperatura Máxima: ${maxima}°C</p>
+                        <p>Temperatura Mínima: ${minima}°C</p>
+                    </div>`;
+
+            // Estado del cielo
+            const estadoCielo = dia.getElementsByTagName('estado_cielo');
+            html += '<div class="sky-state"><h3>Estado del Cielo:</h3>';
+            for(let i = 0; i < estadoCielo.length; i++) {
+                const periodo = estadoCielo[i].getAttribute('periodo');
+                const estado = estadoCielo[i].childNodes[0].nodeValue;
+                if(periodo && estado) {
+                    html += `<p>Periodo ${periodo}: ${estado}</p>`;
+                }
+            }
+            html += '</div>';
+
+            // Viento
+            const viento = dia.getElementsByTagName('viento');
+            html += '<div class="wind-info"><h3>Viento:</h3>';
+            for(let i = 0; i < viento.length; i++) {
+                const periodo = viento[i].getAttribute('periodo');
+                const direccion = viento[i].getElementsByTagName('direccion')[0].childNodes[0].nodeValue;
+                const velocidad = viento[i].getElementsByTagName('velocidad')[0].childNodes[0].nodeValue;
+                if(periodo) {
+                    html += `<p>Periodo ${periodo}: ${direccion} a ${velocidad} km/h</p>`;
+                }
+            }
+            html += '</div>';
+
+            // Humedad relativa
+            const humedad = dia.getElementsByTagName('humedad_relativa');
+            html += '<div class="humidity"><h3>Humedad Relativa:</h3>';
+            for(let i = 0; i < humedad.length; i++) {
+                const periodo = humedad[i].getAttribute('periodo');
+                const valor = humedad[i].childNodes[0].nodeValue;
+                if(periodo && valor) {
+                    html += `<p>Periodo ${periodo}: ${valor}%</p>`;
+                }
+            }
+            html += '</div>';
+
+            html += '</div>';
+            document.getElementById('weatherInfo').innerHTML = html;
+        }
+
+        // Cargar datos iniciales
+        window.onload = getWeatherData;
+    </script>
+</body>
+</html>

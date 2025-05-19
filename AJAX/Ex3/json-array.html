@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio JSON Array</title>
+    <meta charset="UTF-8">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .info {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Array JSON - Marcas de Coches</h2>
+        
+        <div class="info">
+            <h3>Longitud del Array:</h3>
+            <p id="arrayLength"></p>
+        </div>
+
+        <h3>Elementos en tabla:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Índice</th>
+                    <th>Marca</th>
+                </tr>
+            </thead>
+            <tbody id="arrayTable">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Array JSON local con los mismos datos que el archivo de w3schools
+        const marcasArray = ["Ford", "BMW", "Fiat", "Audi", "Volvo"];
+        
+        // Mostrar la longitud del array
+        document.getElementById("arrayLength").textContent = 
+            `El array contiene ${marcasArray.length} elementos`;
+        
+        // Crear las filas de la tabla
+        let tableHTML = '';
+        marcasArray.forEach((marca, index) => {
+            tableHTML += `
+                <tr>
+                    <td>${index}</td>
+                    <td>${marca}</td>
+                </tr>
+            `;
+        });
+        
+        // Insertar las filas en la tabla
+        document.getElementById("arrayTable").innerHTML = tableHTML;
+    </script>
+</body>
+</html>

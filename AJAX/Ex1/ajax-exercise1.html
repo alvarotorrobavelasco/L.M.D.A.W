@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CD Catalog - AJAX Exercise 1</title>
+    <meta charset="UTF-8">
+    <style>
+        /* Table styles */
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        /* Div table styles */
+        .div-table {
+            display: table;
+            width: 100%;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+        }
+        .div-table-row {
+            display: table-row;
+            border: 1px solid #ccc;
+        }
+        .div-table-header {
+            display: table-cell;
+            padding: 8px;
+            font-weight: bold;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+        }
+        .div-table-cell {
+            display: table-cell;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h2>CD Collection</h2>
+    
+    <h3>Table Version:</h3>
+    <table id="cdTable"></table>
+
+    <h3>Div Version:</h3>
+    <div id="cdDiv"></div>
+
+    <script>
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            const xmlDoc = this.responseXML;
+            const cds = xmlDoc.getElementsByTagName("CD");
+            
+            // Create table header
+            let tableHTML = "<tr><th>Artist</th><th>Title</th><th>Country</th><th>Company</th><th>Price</th><th>Year</th></tr>";
+            
+            // Create div table header
+            let divHTML = '<div class="div-table">' +
+                         '<div class="div-table-row">' +
+                         '<div class="div-table-header">Artist</div>' +
+                         '<div class="div-table-header">Title</div>' +
+                         '<div class="div-table-header">Country</div>' +
+                         '<div class="div-table-header">Company</div>' +
+                         '<div class="div-table-header">Price</div>' +
+                         '<div class="div-table-header">Year</div>' +
+                         '</div>';
+
+            // Populate both table and div with data
+            for (let i = 0; i < cds.length; i++) {
+                const artist = cds[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
+                const title = cds[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+                const country = cds[i].getElementsByTagName("COUNTRY")[0].childNodes[0].nodeValue;
+                const company = cds[i].getElementsByTagName("COMPANY")[0].childNodes[0].nodeValue;
+                const price = cds[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue;
+                const year = cds[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue;
+
+                // Add table row
+                tableHTML += "<tr>" +
+                            "<td>" + artist + "</td>" +
+                            "<td>" + title + "</td>" +
+                            "<td>" + country + "</td>" +
+                            "<td>" + company + "</td>" +
+                            "<td>$" + price + "</td>" +
+                            "<td>" + year + "</td>" +
+                            "</tr>";
+
+                // Add div row
+                divHTML += '<div class="div-table-row">' +
+                          '<div class="div-table-cell">' + artist + '</div>' +
+                          '<div class="div-table-cell">' + title + '</div>' +
+                          '<div class="div-table-cell">' + country + '</div>' +
+                          '<div class="div-table-cell">' + company + '</div>' +
+                          '<div class="div-table-cell">$' + price + '</div>' +
+                          '<div class="div-table-cell">' + year + '</div>' +
+                          '</div>';
+            }
+
+            // Close div table
+            divHTML += '</div>';
+
+            // Update the DOM
+            document.getElementById("cdTable").innerHTML = tableHTML;
+            document.getElementById("cdDiv").innerHTML = divHTML;
+        }
+        // Change the URL to use local file
+        xhttp.open("GET", "cd_catalog.xml");
+        xhttp.send();
+    </script>
+</body>
+</html>

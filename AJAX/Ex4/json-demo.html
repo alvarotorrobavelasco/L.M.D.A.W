@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio JSON Demo</title>
+    <meta charset="UTF-8">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .info-section {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Información Personal y Mascotas</h2>
+
+        <!-- Secciones individuales -->
+        <div class="info-section">
+            <h3>Edad:</h3>
+            <p id="edad"></p>
+        </div>
+
+        <div class="info-section">
+            <h3>Primera Mascota:</h3>
+            <p id="primeraMascota"></p>
+        </div>
+
+        <div class="info-section">
+            <h3>Número de Mascotas:</h3>
+            <p id="numMascotas"></p>
+        </div>
+
+        <div class="info-section">
+            <h3>Nombres de todas las Mascotas:</h3>
+            <p id="nombresMascotas"></p>
+        </div>
+
+        <div class="info-section">
+            <h3>Todos los Datos:</h3>
+            <p id="todosLosDatos"></p>
+        </div>
+
+        <!-- Tabla de datos -->
+        <h3>Datos en Tabla:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Propiedad</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody id="tablaDatos">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Datos JSON locales
+        const jsonData = {
+            "name": "John",
+            "age": 31,
+            "pets": [
+                { "animal": "dog", "name": "Fido" },
+                { "animal": "cat", "name": "Felix" },
+                { "animal": "hamster", "name": "Lightning" }
+            ]
+        };
+
+        // Mostrar edad
+        document.getElementById("edad").textContent = jsonData.age;
+
+        // Mostrar tipo de animal y nombre de la primera mascota
+        document.getElementById("primeraMascota").innerHTML = 
+            `Tipo: ${jsonData.pets[0].animal}<br>Nombre: ${jsonData.pets[0].name}`;
+
+        // Mostrar número de mascotas
+        document.getElementById("numMascotas").textContent = jsonData.pets.length;
+
+        // Mostrar nombres de todas las mascotas
+        let nombresMascotas = '';
+        for(let mascota of jsonData.pets) {
+            nombresMascotas += `${mascota.name}<br>`;
+        }
+        document.getElementById("nombresMascotas").innerHTML = nombresMascotas;
+
+        // Mostrar todos los datos en un párrafo
+        let todosLosDatos = `Nombre: ${jsonData.name}<br>`;
+        todosLosDatos += `Edad: ${jsonData.age}<br>`;
+        todosLosDatos += 'Mascotas:<br>';
+        for(let i = 0; i < jsonData.pets.length; i++) {
+            todosLosDatos += `- ${jsonData.pets[i].animal}: ${jsonData.pets[i].name}<br>`;
+        }
+        document.getElementById("todosLosDatos").innerHTML = todosLosDatos;
+
+        // Mostrar datos en tabla
+        let tablaHTML = '';
+        // Datos personales
+        tablaHTML += `
+            <tr>
+                <td>Nombre</td>
+                <td>${jsonData.name}</td>
+            </tr>
+            <tr>
+                <td>Edad</td>
+                <td>${jsonData.age}</td>
+            </tr>`;
+        
+        // Datos de mascotas
+        jsonData.pets.forEach((mascota, index) => {
+            tablaHTML += `
+                <tr>
+                    <td>Mascota ${index + 1}</td>
+                    <td>${mascota.animal} - ${mascota.name}</td>
+                </tr>`;
+        });
+        
+        document.getElementById("tablaDatos").innerHTML = tablaHTML;
+    </script>
+</body>
+</html>
