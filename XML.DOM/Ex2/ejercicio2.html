@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2 - XML DOM</title>
+    <meta charset="UTF-8">
+    <style>
+        .seccion {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        h3 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h2>Catálogo de CDs</h2>
+    
+    <div class="seccion">
+        <h3>Títulos:</h3>
+        <p id="titulos"></p>
+    </div>
+
+    <div class="seccion">
+        <h3>Precios:</h3>
+        <p id="precios"></p>
+    </div>
+
+    <div class="seccion">
+        <h3>Compañías:</h3>
+        <p id="companias"></p>
+    </div>
+
+    <div class="seccion">
+        <h3>Información Completa:</h3>
+        <p id="completo"></p>
+    </div>
+
+    <script>
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            const xmlDoc = this.responseXML;
+            
+            // Mostrar títulos
+            let titulos = "";
+            const titles = xmlDoc.getElementsByTagName("TITLE");
+            for(let i = 0; i < titles.length; i++) {
+                titulos += titles[i].childNodes[0].nodeValue + "<br>";
+            }
+            document.getElementById("titulos").innerHTML = titulos;
+
+            // Mostrar precios
+            let precios = "";
+            const prices = xmlDoc.getElementsByTagName("PRICE");
+            for(let i = 0; i < prices.length; i++) {
+                precios += prices[i].childNodes[0].nodeValue + "€<br>";
+            }
+            document.getElementById("precios").innerHTML = precios;
+
+            // Mostrar compañías
+            let companias = "";
+            const companies = xmlDoc.getElementsByTagName("COMPANY");
+            for(let i = 0; i < companies.length; i++) {
+                companias += companies[i].childNodes[0].nodeValue + "<br>";
+            }
+            document.getElementById("companias").innerHTML = companias;
+
+            // Mostrar información completa
+            const cds = xmlDoc.getElementsByTagName("CD");
+            let infoCompleta = "";
+            for(let i = 0; i < cds.length; i++) {
+                const title = cds[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+                const artist = cds[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
+                const price = cds[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue;
+                infoCompleta += title + " - (" + artist + ") " + price + "€<br>";
+            }
+            document.getElementById("completo").innerHTML = infoCompleta;
+        }
+        xhttp.open("GET", "cd_catalog.xml");
+        xhttp.send();
+    </script>
+</body>
+</html>

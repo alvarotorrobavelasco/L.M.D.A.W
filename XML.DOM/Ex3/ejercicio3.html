@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 3 - XML DOM</title>
+    <meta charset="UTF-8">
+    <style>
+        .seccion {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Análisis de Libros XML</h2>
+    
+    <div class="seccion">
+        <h3>Título del primer libro:</h3>
+        <p id="primerTitulo"></p>
+    </div>
+
+    <div class="seccion">
+        <h3>Todos los títulos:</h3>
+        <p id="todosTitulos"></p>
+    </div>
+
+    <div class="seccion">
+        <h3>Información del cuarto libro:</h3>
+        <p id="numAtributos"></p>
+        <p id="valorAtributos"></p>
+    </div>
+
+    <div class="seccion">
+        <h3>Información del tercer libro:</h3>
+        <p id="numAutores"></p>
+        <p id="autores"></p>
+    </div>
+
+    <div class="seccion">
+        <h3>Tabla de Libros:</h3>
+        <table id="tablaLibros">
+            <tr>
+                <th>Título</th>
+                <th>Primer Autor</th>
+                <th>Precio</th>
+                <th>Año</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            const xmlDoc = this.responseXML;
+            
+            // Título del primer libro
+            const primerTitulo = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+            document.getElementById("primerTitulo").innerHTML = primerTitulo;
+
+            // Todos los títulos
+            let todosTitulos = "";
+            const titulos = xmlDoc.getElementsByTagName("title");
+            for(let i = 0; i < titulos.length; i++) {
+                todosTitulos += (i + 1) + ". " + titulos[i].childNodes[0].nodeValue + "<br>";
+            }
+            document.getElementById("todosTitulos").innerHTML = todosTitulos;
+
+            // Información del cuarto libro
+            const cuartoLibro = xmlDoc.getElementsByTagName("book")[3];
+            document.getElementById("numAtributos").innerHTML = 
+                "Número de atributos: " + cuartoLibro.attributes.length;
+            
+            let valorAtributos = "Valores de los atributos:<br>";
+            for(let i = 0; i < cuartoLibro.attributes.length; i++) {
+                valorAtributos += cuartoLibro.attributes[i].name + ": " + 
+                                cuartoLibro.attributes[i].value + "<br>";
+            }
+            document.getElementById("valorAtributos").innerHTML = valorAtributos;
+
+            // Información del tercer libro
+            const tercerLibro = xmlDoc.getElementsByTagName("book")[2];
+            const autoresTercer = tercerLibro.getElementsByTagName("author");
+            document.getElementById("numAutores").innerHTML = 
+                "Número de autores: " + autoresTercer.length;
+            
+            let listaAutores = "Autores:<br>";
+            for(let i = 0; i < autoresTercer.length; i++) {
+                listaAutores += (i + 1) + ". " + autoresTercer[i].childNodes[0].nodeValue + "<br>";
+            }
+            document.getElementById("autores").innerHTML = listaAutores;
+
+            // Crear tabla
+            const libros = xmlDoc.getElementsByTagName("book");
+            const tabla = document.getElementById("tablaLibros");
+            
+            for(let i = 0; i < libros.length; i++) {
+                const fila = tabla.insertRow(-1);
+                const titulo = libros[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                const autor = libros[i].getElementsByTagName("author")[0].childNodes[0].nodeValue;
+                const precio = libros[i].getElementsByTagName("price")[0].childNodes[0].nodeValue;
+                const año = libros[i].getElementsByTagName("year")[0].childNodes[0].nodeValue;
+                
+                fila.insertCell(0).innerHTML = titulo;
+                fila.insertCell(1).innerHTML = autor;
+                fila.insertCell(2).innerHTML = precio + "€";
+                fila.insertCell(3).innerHTML = año;
+            }
+        }
+        xhttp.open("GET", "books.xml");
+        xhttp.send();
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicios XML DOM</title>
+    <meta charset="UTF-8">
+    <style>
+        .resultado {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        #error {
+            color: red;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicios XML DOM</h1>
+    <div id="error"></div>
+    <div id="resultados"></div>
+
+    <script>
+        // Función para mostrar errores
+        function mostrarError(mensaje) {
+            document.getElementById('error').innerHTML = mensaje;
+        }
+
+        // Función para mostrar resultados
+        function mostrarResultado(titulo, resultado) {
+            const div = document.createElement('div');
+            div.className = 'resultado';
+            div.innerHTML = `<strong>${titulo}:</strong> ${resultado}`;
+            document.getElementById('resultados').appendChild(div);
+        }
+
+        // Mostrar mensaje de carga
+        mostrarResultado('Estado', 'Cargando datos...');
+
+        // Cargar el XML local
+        fetch('books.xml')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al cargar el XML');
+                }
+                return response.text();
+            })
+            .then(str => {
+                mostrarResultado('XML cargado', 'Procesando datos...');
+                return (new window.DOMParser()).parseFromString(str, "text/xml");
+            })
+            .then(data => {
+                // Limpiar mensaje de carga
+                document.getElementById('resultados').innerHTML = '';
+
+                // 1. Título del primer libro
+                mostrarResultado('Título del primer libro', 
+                    data.getElementsByTagName("title")[0].childNodes[0].nodeValue);
+
+                // 2. Año del primer libro
+                mostrarResultado('Año del primer libro', 
+                    data.getElementsByTagName("year")[0].childNodes[0].nodeValue);
+
+                // 3. Precio del segundo libro
+                mostrarResultado('Precio del segundo libro', 
+                    data.getElementsByTagName("price")[1].childNodes[0].nodeValue);
+
+                // 4. Autor del primer libro
+                mostrarResultado('Autor del primer libro', 
+                    data.getElementsByTagName("author")[0].childNodes[0].nodeValue);
+
+                // 5. Primer autor del tercer libro
+                mostrarResultado('Primer autor del tercer libro', 
+                    data.getElementsByTagName("book")[2].getElementsByTagName('author')[0].childNodes[0].nodeValue);
+
+                // 6. Segundo autor del tercer libro
+                mostrarResultado('Segundo autor del tercer libro', 
+                    data.getElementsByTagName("book")[2].getElementsByTagName('author')[1].childNodes[0].nodeValue);
+
+                // 7. Nombre del primer atributo del primer libro
+                mostrarResultado('Nombre del primer atributo del primer libro', 
+                    data.getElementsByTagName("book")[0].attributes[0].nodeName);
+
+                // 8. Valor del primer atributo del primer libro
+                mostrarResultado('Valor del primer atributo del primer libro', 
+                    data.getElementsByTagName("book")[0].attributes[0].nodeValue);
+
+                // 9. Número de autores del tercer libro
+                mostrarResultado('Número de autores del tercer libro', 
+                    data.getElementsByTagName("book")[2].getElementsByTagName('author').length);
+
+                // 10. Mostrar todos los autores del tercer libro
+                const autores = data.getElementsByTagName("book")[2].getElementsByTagName('author');
+                let listaAutores = '';
+                for(let i = 0; i < autores.length; i++) {
+                    listaAutores += autores[i].childNodes[0].nodeValue + '<br>';
+                }
+                mostrarResultado('Autores del tercer libro', listaAutores);
+
+                // 11. Número de atributos del cuarto libro
+                mostrarResultado('Número de atributos del cuarto libro', 
+                    data.getElementsByTagName("book")[3].attributes.length);
+
+                // 12. Valor de los atributos del cuarto libro
+                const atributos = data.getElementsByTagName("book")[3].attributes;
+                let listaAtributos = '';
+                for(let i = 0; i < atributos.length; i++) {
+                    listaAtributos += atributos[i].nodeValue + '<br>';
+                }
+                mostrarResultado('Valores de los atributos del cuarto libro', listaAtributos);
+            })
+            .catch(error => {
+                mostrarError(`Error: ${error.message}`);
+                console.error('Error al cargar el XML:', error);
+            });
+    </script>
+</body>
+</html>
